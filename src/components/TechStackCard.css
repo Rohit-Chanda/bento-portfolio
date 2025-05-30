@@ -1,0 +1,101 @@
+/* Container for the whole tech stack card */
+.tech-stack-card {
+  overflow: hidden;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05); /* neutral glass effect */
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  color: var(--text-color);
+  transition: box-shadow 0.3s ease;
+  box-shadow: none; /* No shadow by default */
+}
+
+.tech-stack-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+/* Heading styling */
+.tech-stack-card h4 {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+/* Scroll container */
+.logo-track-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 4px 0;
+}
+
+/* Flex track that scrolls continuously */
+.logo-track {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: max-content;
+  animation: scrollLoop 30s linear infinite;
+  will-change: transform;
+}
+
+/* Glass background for each logo */
+.logo-glass {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(200, 200, 200, 0.15) !important;
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s ease;
+}
+
+/* Icon styling */
+.tech-icon {
+  height: 32px;
+  width: auto;
+  max-width: 32px;
+  object-fit: contain;
+  opacity: 0.95;
+}
+
+/* Continuous scroll animation */
+@keyframes scrollLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
+}
+
+/* Theme colors */
+body.dark {
+  --text-color: #fff;
+}
+body.light {
+  --text-color: #111;
+}
+
+/* Light theme overrides */
+@media (prefers-color-scheme: light) {
+  .tech-stack-card {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .logo-glass {
+    background: rgba(255, 255, 255, 0.25);
+    border: 0.5px solid rgba(100, 100, 100, 0.1);
+  }
+
+  :root {
+    --text-color: #111;
+  }
+}

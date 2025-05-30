@@ -1,0 +1,92 @@
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  grid-gap: 16px;
+  padding: 16px;
+  justify-content: start;
+}
+
+.social-grid a {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #aaa;
+  border-radius: 16px;
+  font-size: 28px;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+/* Hover colors restored */
+.social-icon.twitter:hover    { background-color: #1DA1F2; color: white; }
+.social-icon.dribbble:hover   { background-color: #EA4C89; color: white; }
+.social-icon.instagram:hover  { background-color: #E1306C; color: white; }
+.social-icon.linkedin:hover   { background-color: #0077B5; color: white; }
+.social-icon.behance:hover    { background-color: #1769FF; color: white; }
+.social-icon.email:hover      { background-color: #D44638; color: white; }
+
+/* Base social icon */
+.social-icon {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: white;
+  font-size: 24px;
+  padding: 12px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px;
+}
+
+/* Add glass effect for responsive container */
+.responsive-social-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+  margin-top: 24px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Medium & small screen adjustments */
+@media (max-width: 768px) {
+  .social-grid {
+    grid-template-columns: repeat(6, 1fr);
+    justify-content: center;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .social-grid a {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+  }
+
+  .responsive-social-glass {
+    margin-top: 40px;
+    width: 90%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .social-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+  }
+
+  .social-grid a {
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+  }
+}

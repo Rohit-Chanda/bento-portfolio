@@ -1,0 +1,73 @@
+/* Card container */
+.theme-toggle-card {
+  display: flex;
+  justify-content: center;   /* Centers horizontally */
+  align-items: center;       /* Centers vertically */
+  height: 100%;              /* Ensure it takes full height */
+  width: 100%;               /* Optional: full width */
+}
+
+
+/* Light and dark background variants */
+body.light .theme-toggle-card {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .theme-toggle-card {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+}
+
+/* Switch wrapper */
+.toggle-switch {
+  width: 60px;
+  height: 32px;
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+  padding: 4px;
+  box-sizing: border-box;
+  transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+/* Theme-aware borders and backgrounds */
+body.dark .toggle-switch {
+  border: 2px solid #fff;
+  background-color: #1e1e1e;
+}
+
+body.light .toggle-switch {
+  border: 2px solid #000;
+  background-color: #eee;
+}
+
+/* Inner slider */
+.slider {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: transform 0.3s ease, background 0.3s ease;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+/* Move based on theme */
+.slider.light {
+  transform: translateX(28px);
+  background: #fff;
+  color: #111;
+}
+
+.slider.dark {
+  transform: translateX(0);
+  background: #000;
+  color: #f5d76e; /* moon yellow */
+}
