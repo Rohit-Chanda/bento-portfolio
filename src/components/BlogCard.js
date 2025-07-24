@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const groupLink = process.env.REACT_APP_GROUP_LINK;
 const BlogCard = () => {
   return (
     <motion.div
@@ -12,7 +13,7 @@ const BlogCard = () => {
       <h2>Latest From My Blog</h2>
       <p>Explore insights on web development, design, and tech trends.</p>
       <a
-        href="https://yourblogsite.com" // Replace with your actual blog URL
+        href={groupLink} // Replace with your actual blog URL
         target="_blank"
         rel="noopener noreferrer"
         className="glass-btn"

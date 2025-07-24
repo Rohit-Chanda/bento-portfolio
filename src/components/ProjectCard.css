@@ -1,0 +1,75 @@
+.project-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+
+/* Hidden dark overlay by default */
+.hover-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  /* KEY FIXES */
+  border-radius: inherit;
+  overflow: hidden;
+  mask-image: radial-gradient(white, black); /* Helps fix gradient edge aliasing */
+  backface-visibility: hidden;
+}
+
+
+
+.project-card:hover .hover-overlay {
+  opacity: 1;
+}
+
+/* Inner content (text + arrow) */
+.overlay-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Text on the left */
+.project-text h2 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Button on the right */
+.arrow-button {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.6rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.arrow-button:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.arrow-button img {
+  width: 18px;
+  height: 18px;
+  filter: invert(1);
+}

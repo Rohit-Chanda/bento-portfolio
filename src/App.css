@@ -6,7 +6,7 @@
 :root {
   --text-dark: #1a1a1a;
   --text-light: #d5d5d5;
-  --bg-light: #6bf4ed;
+  --bg-light: #767878;
   --bg-dark: #110f0f;
 
   --arrow-bg: rgba(255, 255, 255, 0.05);
@@ -616,4 +616,38 @@ body.light .arrow-icon img {
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
+}
+
+
+/* Global modal close button styles */
+.close-button {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1000;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Light mode */
+body.light .close-button {
+  background: rgba(0, 0, 0, 0.15);  /* dark translucent */
+  color: #000; /* black icon */
+}
+
+/* Dark mode */
+body.dark .close-button {
+  background: rgba(255, 255, 255, 0.15); /* light translucent */
+  color: #fff; /* white icon */
 }

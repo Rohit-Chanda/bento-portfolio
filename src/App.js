@@ -60,22 +60,21 @@ function App() {
       </div>
 
       <AnimatePresence>
-        {modalOpen && (
-          <Modal isOpen={modalOpen} onClose={closeModal}>
-            {modalContent === "projects" && (
-              <div>
-                <h2>My Projects</h2>
-                <p>All the cool stuff I’ve worked on!</p>
-              </div>
-            )}
-            {modalContent === "about" && (
-              <Modal isOpen={modalOpen} onClose={closeModal}>
-                <AboutModalContent onClose={closeModal} />
-              </Modal>
-            )}
-          </Modal>
-        )}
-      </AnimatePresence>
+  {modalOpen && (
+    <Modal isOpen={modalOpen} onClose={closeModal}>
+      {modalContent === "projects" && (
+        <div>
+          <h2>My Projects</h2>
+          <p>All the cool stuff I’ve worked on!</p>
+        </div>
+      )}
+      {modalContent === "about" && (
+        <AboutModalContent onClose={closeModal} />
+      )}
+    </Modal>
+  )}
+</AnimatePresence>
+
     </div>
   );
 }

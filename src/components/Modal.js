@@ -61,31 +61,14 @@ const Modal = ({ isOpen, onClose, children }) => {
         {/* Close button */}
         <button
           onClick={onClose}
-          style={{
-            position: "absolute",
-            top: "1rem",
-            left: "50%",
-            transform: "translateX(-50%)",
-            background: "rgba(255,255,255,0.15)",
-            border: "none",
-            borderRadius: "50%",
-            width: "2rem",
-            height: "2rem",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            fontSize: "1.2rem",
-            color: "#fff",
-            backdropFilter: "blur(6px)",
-            WebkitBackdropFilter: "blur(6px)",
-          }}
+          className="close-button"
         >
-          ✕
+           ✕
         </button>
 
+
         {children}
-        {/* <AboutModalContent /> */}
+        <AboutModalContent /> 
       </motion.div>
     </motion.div>
   );
