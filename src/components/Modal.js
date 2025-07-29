@@ -1,7 +1,7 @@
 // components/Modal.js
 import React from "react";
 import { motion } from "framer-motion";
-import AboutModalContent from "./AboutModalContent";
+// import AboutModalContent from "./AboutModalContent";
 
 const backdrop = {
   hidden: { opacity: 0 },
@@ -18,25 +18,20 @@ const modal = {
 const Modal = ({ isOpen, onClose, children }) => {
   return (
     <motion.div
-      className="modal-backdrop"
+      className="modal-overlay"
       variants={backdrop}
       initial="hidden"
       animate="visible"
       exit="exit"
       onClick={onClose}
       style={{
-        position: "fixed", // FIXED instead of absolute
-        top: 0,
-        left: 0,
-        width: "100vw",
-        height: "100vh",
+        position: "fixed",
+        inset: 0,
         backgroundColor: "rgba(0, 0, 0, 0.6)",
         zIndex: 9999,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        overflowY: "auto", 
         padding: "2rem",
-        overflow: "auto", // enable backdrop scroll if needed
+        display: "block",  
       }}
     >
       <motion.div
@@ -52,23 +47,31 @@ const Modal = ({ isOpen, onClose, children }) => {
           borderRadius: "16px",
           width: "100%",
           maxWidth: "960px",
-          maxHeight: "90vh",
-          overflowY: "auto",
+          margin: "6rem auto",           
           position: "relative",
           boxShadow: "0 4px 30px rgba(0,0,0,0.2)",
         }}
       >
-        {/* Close button */}
+        {/* Close Button */}
         <button
           onClick={onClose}
           className="close-button"
+          style={{
+            position: "absolute",
+            top: "1rem",
+            right: "1rem",
+            fontSize: "1.5rem",
+            background: "transparent",
+            border: "none",
+            cursor: "pointer",
+            color: "#999",
+          }}
         >
-           ✕
+          ✕
         </button>
 
-
         {children}
-        <AboutModalContent /> 
+        {/* <AboutModalContent /> */}
       </motion.div>
     </motion.div>
   );

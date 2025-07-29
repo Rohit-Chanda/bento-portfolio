@@ -50,31 +50,34 @@ function App() {
         <IntroCard />
         <ProjectCard onClick={() => openModal("projects")} />
         <SocialLinksCard />
-        <PhotoCard />
+
         <AboutCard onClick={() => openModal("about")} />
+        <PhotoCard />
         <BlogCard />
+        <ContactCard />
+        {/* <ProjectCard /> */}
+
         <ProjectCard />
+
         <ThemeToggleCard isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         <TechStackCard />
-        <ContactCard />
       </div>
 
       <AnimatePresence>
-  {modalOpen && (
-    <Modal isOpen={modalOpen} onClose={closeModal}>
-      {modalContent === "projects" && (
-        <div>
-          <h2>My Projects</h2>
-          <p>All the cool stuff I’ve worked on!</p>
-        </div>
-      )}
-      {modalContent === "about" && (
-        <AboutModalContent onClose={closeModal} />
-      )}
-    </Modal>
-  )}
-</AnimatePresence>
-
+        {modalOpen && (
+          <Modal isOpen={modalOpen} onClose={closeModal}>
+            {modalContent === "projects" && (
+              <div>
+                <h2>My Projects</h2>
+                <p>All the cool stuff I’ve worked on!</p>
+              </div>
+            )}
+            {modalContent === "about" && (
+              <AboutModalContent onClose={closeModal} />
+            )}
+          </Modal>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
