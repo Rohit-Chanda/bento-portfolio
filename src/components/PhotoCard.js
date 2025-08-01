@@ -9,7 +9,7 @@ const PhotoCard = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
     //  whileHover={{ scale: 1.03 }}
     >
-      <img src="./me.jpg" alt="My Profile" className="square-photo" />
+      <img src="/me.jpg" alt="My Profile" className="square-photo" />
     </motion.div>
   );
 };

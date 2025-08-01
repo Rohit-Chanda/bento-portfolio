@@ -12,6 +12,8 @@ import TechStackCard from "./components/TechStackCard";
 import Modal from "./components/Modal";
 import { AnimatePresence } from "framer-motion";
 import AboutModalContent from "./components/AboutModalContent";
+import ProjectModalContent from "./components/ProjectModalContent";
+import projectData from "./data/projectData";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -21,14 +23,23 @@ function App() {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
+  const [selectedProjectId, setSelectedProjectId] = useState(null);
 
-  const openModal = (type) => {
+  // 🎯 Get the project data from projectData.js using the ID
+  const selectedProject = projectData.find(
+    (project) => project.id === selectedProjectId
+  );
+
+  const openModal = (type, id = null) => {
     setModalContent(type);
+    setSelectedProjectId(id);
     setModalOpen(true);
   };
 
+
   const closeModal = () => {
     setModalOpen(false);
+    setSelectedProjectId(null); // optional: reset project
   };
 
   // 🔒 Prevent background scroll when modal is open
@@ -44,33 +55,30 @@ function App() {
 
   const toggleTheme = () => setIsDarkMode((prev) => !prev);
 
+  const portfolio = projectData.find(project => project.id === "portfolio");
+  const task = projectData.find(project => project.id === "task");
+
+
   return (
     <div className="app app-container glass-card">
       <div className="grid">
         <IntroCard />
-        <ProjectCard onClick={() => openModal("projects")} />
+        <ProjectCard project={portfolio} onClick={() => openModal("projects", portfolio.id)} />
         <SocialLinksCard />
-
         <AboutCard onClick={() => openModal("about")} />
         <PhotoCard />
         <BlogCard />
-        <ContactCard />
-        {/* <ProjectCard /> */}
-
-        <ProjectCard />
-
+        <ProjectCard project={task} onClick={() => openModal("projects", task.id)} />
         <ThemeToggleCard isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+        <ContactCard />
         <TechStackCard />
       </div>
 
       <AnimatePresence>
         {modalOpen && (
           <Modal isOpen={modalOpen} onClose={closeModal}>
-            {modalContent === "projects" && (
-              <div>
-                <h2>My Projects</h2>
-                <p>All the cool stuff I’ve worked on!</p>
-              </div>
+            {modalContent === "projects" && selectedProject && (
+              <ProjectModalContent project={selectedProject} />
             )}
             {modalContent === "about" && (
               <AboutModalContent onClose={closeModal} />
